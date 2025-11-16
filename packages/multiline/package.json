@@ -1,7 +1,7 @@
 {
   "name": "@cli-prompts/multiline",
-  "version": "1.1.12",
-  "description": "",
+  "version": "1.0.0",
+  "description": "A production-ready multiline text prompt for Node.js CLIs. Flicker-free, smooth, and supports full cursor movement with rich ANSI rendering. Built to fill the gap the other great libraries never covered.",
   "author": {
     "name": "PRASSamin",
     "url": "https://github.com/PRASSamin"
@@ -12,7 +12,8 @@
   },
   "homepage": "https://github.com/PRASSamin/cli-prompts",
   "bugs": {
-    "url": "https://github.com/PRASSamin/cli-prompts/issues"
+    "url": "https://github.com/PRASSamin/cli-prompts/issues",
+    "email": "prassamin@gmail.com"
   },
   "license": "MIT",
   "sideEffects": false,
@@ -33,13 +34,36 @@
     "LICENSE.md",
     "README.md"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "publishConfig": {
     "access": "public"
   },
   "private": false,
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "prompt",
+    "multiline",
+    "multiline-input",
+    "cli-input",
+    "terminal",
+    "ansi",
+    "inquirer",
+    "enquirer",
+    "interactive",
+    "nodejs",
+    "command-line",
+    "chalk",
+    "tty",
+    "bracketed-paste",
+    "text-editor",
+    "input",
+    "cli-toolkit",
+    "cli-framework"
+  ],
   "scripts": {
-    "dev": "bun examples/index.ts",
+    "dev": "tsx examples/index.ts",
     "build": "tsup"
   },
   "devDependencies": {

@@ -6,7 +6,7 @@ A modern, flicker-free, feature-rich multiline text input for your command-line 
 
 Have you ever been frustrated that `inquirer` and other great libraries are missing a proper, smooth multiline text input? This package solves that. It's a standalone component designed from the ground up to provide a first-class "textarea" experience in the terminal.
 
-![Multiline Demo GIF](demo.gif)
+![Multiline Demo GIF](https://github.com/PRASSamin/cli-prompts/blob/0d04be4dae4548bbd30a08ae2233720a3f1eda37/packages/multiline/demo.gif?raw=true)
 
 ## ✨ Features
 
@@ -132,18 +132,18 @@ _`ColorName` can be one of: `'black'`, `'red'`, `'green'`, `'yellow'`, `'blue'`,
 
 ## ⌨️ Key Bindings
 
-| Key                               | Action                 |
-| --------------------------------- | ---------------------- |
-| `Enter`                           | Submit the input       |
+| Key                                 | Action                 |
+| ----------------------------------- | ---------------------- |
+| `Enter`                             | Submit the input       |
 | `Shift` + `Enter` / `Alt` + `Enter` | Insert a new line      |
-| `Ctrl` + `C`                      | Abort the prompt       |
-| `Backspace`                       | Delete character left  |
-| `Delete`                          | Delete character right |
-| `Alt` + `Backspace`               | Delete word left       |
-| `Ctrl` + `W`                      | Delete word left       |
-| `Arrow Keys`                      | Move cursor            |
-| `Ctrl` + `Left`                   | Move to previous word  |
-| `Ctrl` + `Right`                  | Move to next word      |
+| `Ctrl` + `C`                        | Abort the prompt       |
+| `Backspace`                         | Delete character left  |
+| `Delete`                            | Delete character right |
+| `Alt` + `Backspace`                 | Delete word left       |
+| `Ctrl` + `W`                        | Delete word left       |
+| `Arrow Keys`                        | Move cursor            |
+| `Ctrl` + `Left`                     | Move to previous word  |
+| `Ctrl` + `Right`                    | Move to next word      |
 
 ## 📄 License
 

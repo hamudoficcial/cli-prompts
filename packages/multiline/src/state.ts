@@ -1,4 +1,4 @@
-import type { Style } from "./styles";
+import type { Style } from './styles';
 
 export interface State {
   prompt: string;
@@ -23,19 +23,19 @@ export function createState(
   prompt: string,
   instruction: string | false,
   style: Style,
-  defaultValue = "",
+  defaultValue = '',
   placeholder?: string,
   maxLength?: number
 ): State {
-  const value = defaultValue.split("\n");
+  const value = defaultValue.split('\n');
   return {
     prompt,
     instruction,
     placeholder,
     style,
-    value: defaultValue ? value : [""],
+    value: defaultValue ? value : [''],
     cursor: {
-      x: (value.at(-1) ?? "").length,
+      x: (value.at(-1) ?? '').length,
       y: defaultValue ? value.length - 1 : 0,
     },
     isDone: false,

@@ -52,17 +52,17 @@ type UserColors = Partial<{
 
 // The type for the user-facing 'style' option object.
 export type UserOptionsStyle = Partial<{
-  prefixes: Partial<Style["prefixes"]>;
+  prefixes: Partial<Style['prefixes']>;
   colors: UserColors;
 }>;
 
 // The default style configuration.
 export const defaultStyle: Style = {
   prefixes: {
-    prompt: "?",
-    success: "✔",
-    error: "✖",
-    input: "›",
+    prompt: '?',
+    success: '✔',
+    error: '✖',
+    input: '›',
   },
   colors: {
     prompt: color.cyan,

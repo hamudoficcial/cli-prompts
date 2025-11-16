@@ -10,7 +10,7 @@
     "version": "changeset version",
     "release": "changeset publish",
     "lint": "eslint ./packages --ext .ts,.tsx",
-    "format": "prettier --write ."
+    "format": "prettier --write ./packages/**/src/**/*.ts"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
@@ -24,6 +24,7 @@
     "eslint-plugin-prettier": "^5.5.3",
     "prettier": "^3.6.2",
     "tsup": "^8.5.1",
+    "tsx": "^4.20.6",
     "typescript": "^5",
     "typescript-eslint": "^8.46.4",
     "vitest": "^4.0.9"

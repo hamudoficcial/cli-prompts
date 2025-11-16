@@ -5,7 +5,10 @@ import type { State } from '../src/state';
 import { defaultStyle } from '../src/styles';
 
 // Helper to create a mock key object
-const key = (name: string, opts: Partial<{ ctrl: boolean; meta: boolean; shift: boolean; sequence: string }> = {}) => ({
+const key = (
+  name: string,
+  opts: Partial<{ ctrl: boolean; meta: boolean; shift: boolean; sequence: string }> = {}
+) => ({
   name,
   sequence: opts.sequence || name,
   ctrl: opts.ctrl || false,

@@ -1,14 +1,14 @@
-import { createState } from "./state";
-import { enableRawMode, disableRawMode } from "./tty";
-import { render, finalize, cancel } from "./renderer";
-import { handleKeyPress } from "./key-press-handler";
-import { InputParser } from "./input-parser";
-import { AbortError } from "./errors";
-import { nextTick } from "process";
-import { defaultStyle, color } from "./styles";
-import type { Style, UserOptionsStyle, ColorName } from "./styles";
+import { createState } from './state';
+import { enableRawMode, disableRawMode } from './tty';
+import { render, finalize, cancel } from './renderer';
+import { handleKeyPress } from './key-press-handler';
+import { InputParser } from './input-parser';
+import { AbortError } from './errors';
+import { nextTick } from 'process';
+import { defaultStyle, color } from './styles';
+import type { Style, UserOptionsStyle, ColorName } from './styles';
 
-const SPINNER_FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "ⴴ", "⠦", "⠧", "⠇", "⠏"];
+const SPINNER_FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', 'ⴴ', '⠦', '⠧', '⠇', '⠏'];
 const SPINNER_INTERVAL = 80;
 
 type ValidateFn = (value: string) => boolean | string;
@@ -32,11 +32,11 @@ function mergeStyles(defaults: Style, overrides: UserOptionsStyle = {}): Style {
   };
   if (overrides.colors) {
     for (const key in overrides.colors) {
-      const k = key as keyof Style["colors"];
+      const k = key as keyof Style['colors'];
       const value = overrides.colors[k];
-      if (typeof value === "string") {
+      if (typeof value === 'string') {
         style.colors[k] = color[value as ColorName] || ((str: string) => str);
-      } else if (typeof value === "function") {
+      } else if (typeof value === 'function') {
         style.colors[k] = value;
       }
     }
@@ -49,34 +49,24 @@ export function multiline(options: string | MultilineOptions): Promise<string> {
     const {
       prompt,
       instruction: instructionArg = true,
-      default: defaultValue = "",
+      default: defaultValue = '',
       required = false,
       validate,
       placeholder,
       spinner = false,
       style: userStyle,
       maxLength,
-    } = typeof options === "string"
-      ? ({ prompt: options } as MultilineOptions)
-      : options;
+    } = typeof options === 'string' ? ({ prompt: options } as MultilineOptions) : options;
 
     const style = mergeStyles(defaultStyle, userStyle);
 
-    const defaultInstruction =
-      "Press Enter to submit, Shift+Enter for a new line.";
+    const defaultInstruction = 'Press Enter to submit, Shift+Enter for a new line.';
     let instruction: string | false;
     if (instructionArg === false) instruction = false;
-    else if (typeof instructionArg === "string") instruction = instructionArg;
+    else if (typeof instructionArg === 'string') instruction = instructionArg;
     else instruction = defaultInstruction;
 
-    const state = createState(
-      prompt,
-      instruction,
-      style,
-      defaultValue,
-      placeholder,
-      maxLength
-    );
+    const state = createState(prompt, instruction, style, defaultValue, placeholder, maxLength);
     if (spinner) {
       state.spinner = { frames: SPINNER_FRAMES, currentFrame: 0 };
     }
@@ -100,15 +90,15 @@ export function multiline(options: string | MultilineOptions): Promise<string> {
       });
     };
 
-    const cleanup = (finalState: "finalize" | "cancel") => {
+    const cleanup = (finalState: 'finalize' | 'cancel') => {
       if (isDone) return;
       isDone = true;
       if (spinnerInterval) clearInterval(spinnerInterval);
       process.stdin.pause();
-      process.stdin.removeListener("data", onData);
-      process.removeListener("SIGINT", onSigInt);
+      process.stdin.removeListener('data', onData);
+      process.removeListener('SIGINT', onSigInt);
       disableRawMode();
-      if (finalState === "finalize") updateScreen(finalize(state));
+      if (finalState === 'finalize') updateScreen(finalize(state));
       else updateScreen(cancel(style));
     };
 
@@ -126,7 +116,7 @@ export function multiline(options: string | MultilineOptions): Promise<string> {
     const onPaste = (text: string) => {
       if (state.error) state.error = null;
 
-      const currentLength = state.value.join("\n").length;
+      const currentLength = state.value.join('\n').length;
       let truncatedText = text;
 
       if (state.maxLength && currentLength + text.length > state.maxLength) {
@@ -140,20 +130,17 @@ export function multiline(options: string | MultilineOptions): Promise<string> {
         state.error = `Input cannot exceed ${state.maxLength} characters. Pasted text was truncated.`;
       }
 
-      const lines = truncatedText
-        .replace(/\r\n/g, "\n")
-        .replace(/\r/g, "\n")
-        .split("\n");
+      const lines = truncatedText.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
       const currentLine = state.value[state.cursor.y];
-      const beforeCursor = currentLine?.substring(0, state.cursor.x) ?? "";
-      const afterCursor = currentLine?.substring(state.cursor.x) ?? "";
+      const beforeCursor = currentLine?.substring(0, state.cursor.x) ?? '';
+      const afterCursor = currentLine?.substring(state.cursor.x) ?? '';
       if (lines.length === 1) {
         state.value[state.cursor.y] = beforeCursor + lines[0] + afterCursor;
         state.cursor.x += lines[0]?.length ?? 0;
       } else {
         state.value[state.cursor.y] = beforeCursor + lines[0];
         const newLines: string[] = [];
-        for (let i = 1; i < lines.length - 1; i++) newLines.push(lines[i] ?? "");
+        for (let i = 1; i < lines.length - 1; i++) newLines.push(lines[i] ?? '');
         const lastLine = lines[lines.length - 1] + afterCursor;
         newLines.push(lastLine);
         state.value.splice(state.cursor.y + 1, 0, ...newLines);
@@ -164,18 +151,18 @@ export function multiline(options: string | MultilineOptions): Promise<string> {
     };
 
     const onData = (data: Buffer) => {
-      const chunk = data.toString("utf8");
-      if (chunk === "\x03") {
-        cleanup("cancel");
+      const chunk = data.toString('utf8');
+      if (chunk === '\x03') {
+        cleanup('cancel');
         reject(new AbortError());
         return;
       }
       parser.parse(data);
       if (state.isDone) {
-        const finalValue = state.value.join("\n");
-        if (required && finalValue.trim() === "") {
+        const finalValue = state.value.join('\n');
+        if (required && finalValue.trim() === '') {
           state.isDone = false;
-          state.error = "Input is required.";
+          state.error = 'Input is required.';
           scheduleRender();
           return;
         }
@@ -183,27 +170,27 @@ export function multiline(options: string | MultilineOptions): Promise<string> {
           const result = validate(finalValue);
           if (result !== true) {
             state.isDone = false;
-            state.error = result === false ? "Invalid input." : result;
+            state.error = result === false ? 'Invalid input.' : result;
             scheduleRender();
             return;
           }
         }
-        cleanup("finalize");
+        cleanup('finalize');
         resolve(finalValue);
       }
     };
 
     const onSigInt = () => {
-      cleanup("cancel");
-      reject(new AbortError("Aborted by SIGINT"));
+      cleanup('cancel');
+      reject(new AbortError('Aborted by SIGINT'));
     };
 
-    parser.on("key", onKey);
-    parser.on("paste", onPaste);
+    parser.on('key', onKey);
+    parser.on('paste', onPaste);
     enableRawMode();
-    process.stdin.on("data", onData);
-    process.on("SIGINT", onSigInt);
-    process.stdin.setEncoding("utf8");
+    process.stdin.on('data', onData);
+    process.on('SIGINT', onSigInt);
+    process.stdin.setEncoding('utf8');
     process.stdin.resume();
 
     if (state.spinner) {
