@@ -1,0 +1,51 @@
+{
+  "name": "@cli-prompts/multiline",
+  "version": "1.1.12",
+  "description": "",
+  "author": {
+    "name": "PRASSamin",
+    "url": "https://github.com/PRASSamin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PRASSamin/cli-prompts.git"
+  },
+  "homepage": "https://github.com/PRASSamin/cli-prompts",
+  "bugs": {
+    "url": "https://github.com/PRASSamin/cli-prompts/issues"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "package.json",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "keywords": [],
+  "scripts": {
+    "dev": "bun examples/index.ts",
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "ansi-escapes": "^7.2.0"
+  }
+}

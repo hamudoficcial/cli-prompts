@@ -1,0 +1,32 @@
+{
+  "name": "cli-prompts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm --filter \"./packages/**\" build",
+    "test": "vitest",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish",
+    "lint": "eslint ./packages --ext .ts,.tsx",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5",
+    "@changesets/types": "^6.1.0",
+    "@eslint/js": "^9.32.0",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.4",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.1",
+    "typescript": "^5",
+    "typescript-eslint": "^8.46.4",
+    "vitest": "^4.0.9"
+  },
+  "packageManager": "pnpm@10.16.1"
+}
